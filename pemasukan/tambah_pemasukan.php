@@ -11,12 +11,10 @@ if (isset($_POST['simpan'])) {
               VALUES ('$id_user', '$tanggal', '$jumlah', '$keterangan')";
     mysqli_query($koneksi, $query);
 
-    // Simpan pemasukan
     $query = "INSERT INTO pemasukan (id_user, tanggal, jumlah, keterangan)
               VALUES ('$id_user', '$tanggal', '$jumlah', '$keterangan')";
     $simpan = mysqli_query($koneksi, $query);
 
-    // Update saldo user
     if ($simpan) {
         $updateSaldo = "UPDATE user SET saldo = saldo + $jumlah WHERE id_user = '$id_user'";
         mysqli_query($koneksi, $updateSaldo);
