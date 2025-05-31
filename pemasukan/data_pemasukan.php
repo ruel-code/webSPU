@@ -99,7 +99,7 @@
                 </nav>
                 <div class="container-fluid">
                     <h3>Data Pemasukan</h3>
-                    <a href="tambah_pemasukan.php" class="btn btn-success mb-3">+ Tambah Pemasukan</a>
+                    <a href="tambah_pemasukan.php" class="btn btn-primary mb-3">+ Tambah Pemasukan</a>
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
