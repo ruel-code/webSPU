@@ -31,7 +31,7 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link" href="../dashboard.php">
+                <a class="nav-link" href="../index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -116,10 +116,13 @@
                             $no = 1;
                             $query = mysqli_query($koneksi, "SELECT pemasukan.*, user.nama_lengkap FROM pemasukan JOIN user ON pemasukan.id_user = user.id_user ORDER BY pemasukan.tanggal DESC");
                             while ($data = mysqli_fetch_assoc($query)) {
+
+                                $tanggal = date('d-m-Y', strtotime($data['tanggal']));
+
                                 echo "<tr>
                                           <td>$no</td>
                                           <td>{$data['nama_lengkap']}</td>
-                                          <td>{$data['tanggal']}</td>
+                                          <td>{$tanggal}</td>
                                           <td>Rp " . number_format($data['jumlah'], 0, ',', '.') . "</td>
                                           <td>{$data['keterangan']}</td>
                                           <td>

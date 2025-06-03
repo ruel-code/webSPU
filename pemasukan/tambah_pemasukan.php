@@ -7,9 +7,9 @@ if (isset($_POST['simpan'])) {
     $jumlah    = $_POST['jumlah'];
     $keterangan = $_POST['keterangan'];
 
-    $query = "INSERT INTO pemasukan (id_user, tanggal, jumlah, keterangan) 
-              VALUES ('$id_user', '$tanggal', '$jumlah', '$keterangan')";
-    mysqli_query($koneksi, $query);
+   
+   
+   
 
     $query = "INSERT INTO pemasukan (id_user, tanggal, jumlah, keterangan)
               VALUES ('$id_user', '$tanggal', '$jumlah', '$keterangan')";

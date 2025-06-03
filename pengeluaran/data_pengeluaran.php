@@ -116,17 +116,20 @@
                             $no = 1;
                             $query = mysqli_query($koneksi, "SELECT pengeluaran.*, user.nama_lengkap FROM pengeluaran JOIN user ON pengeluaran.id_user = user.id_user");
                             while ($data = mysqli_fetch_assoc($query)) {
+
+                                $tanggal = date('d-m-Y', strtotime($data['tanggal']));
+
                                 echo "<tr>
-                <td>$no</td>
-                <td>{$data['nama_lengkap']}</td>
-                <td>{$data['tanggal']}</td>
-                <td>Rp " . number_format($data['jumlah'], 0, ',', '.') . "</td>
-                <td>{$data['keterangan']}</td>
-                <td>
-                    <a href='edit_pengeluaran.php?id={$data['id_pengeluaran']}' class='btn btn-warning btn-sm'>Edit</a>
-                    <a href='hapus_pengeluaran.php?id={$data['id_pengeluaran']}' class='btn btn-danger btn-sm' onclick=\"return confirm('Yakin ingin hapus?')\">Hapus</a>
-                </td>
-            </tr>";
+                                          <td>$no</td>
+                                          <td>{$data['nama_lengkap']}</td>
+                                          <td>{$tanggal}</td>
+                                          <td>Rp " . number_format($data['jumlah'], 0, ',', '.') . "</td>
+                                          <td>{$data['keterangan']}</td>
+                                          <td>
+                                              <a href='edit_pengeluaran.php?id={$data['id_pengeluaran']}' class='btn btn-warning btn-sm'>Edit</a>
+                                              <a href='hapus_pengeluaran.php?id={$data['id_pengeluaran']}' class='btn btn-danger btn-sm' onclick=\"return confirm('Yakin ingin hapus?')\">Hapus</a>
+                                          </td>
+                                      </tr>";
                                 $no++;
                             }
                             ?>
