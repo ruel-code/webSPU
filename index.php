@@ -26,7 +26,7 @@ $saldo = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(saldo) AS total_s
 
 <body id="page-top">
     <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-custom sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to right,rgb(49, 53, 54),rgb(8, 62, 74));">
+        <ul class="navbar-nav bg-gradient-custom sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(180deg, #4e73df 10%, #224abe 100%);">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-wallet"></i>
@@ -37,7 +37,7 @@ $saldo = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(saldo) AS total_s
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">
+                <a class="nav-link" href="">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -100,50 +100,131 @@ $saldo = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(saldo) AS total_s
                     </button>
                     <h2>Sistem Pengelolaan Uang</h1>
 
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">SahrulGunawan</span>
+                                    <img class="img-profile rounded-circle"
+                                        src="img/ruel.JPG">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Settings
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Activity Log
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+
                 </nav>
                 <div class="container-fluid">
 
-                    <div class="container mt-4">
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <div class="card bg-primary text-white h-100">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total User Aktif</h5>
-                                        <p class="card-text fs-3"><?= $user['total_user'] ?? 0 ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card bg-success text-white h-100">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Pemasukan</h5>
-                                        <p class="card-text fs-3">Rp <?= number_format($pemasukan['total_pemasukan'] ?? 0, 0, ',', '.') ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card bg-danger text-white h-100">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Pengeluaran</h5>
-                                        <p class="card-text fs-3">Rp <?= number_format($pengeluaran['total_pengeluaran'] ?? 0, 0, ',', '.') ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card bg-info text-white h-100">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Saldo User</h5>
-                                        <p class="card-text fs-3">Rp <?= number_format($saldo['total_saldo'] ?? 0, 0, ',', '.') ?></p>
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Total User Aktif</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $user['total_user'] ?? 0 ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Total Pemasukan</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp <?= number_format($pemasukan['total_pemasukan'] ?? 0, 0, ',', '.') ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Pengeluaran
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= number_format($pengeluaran['total_pengeluaran'] ?? 0, 0, ',', '.') ?></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Saldo User</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= number_format($saldo['total_saldo'] ?? 0, 0, ',', '.') ?></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <hr class="my-4" />
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <h5>Pemasukan Terakhir</h5>
                                 <table class="table table-striped">
-                                    <thead class="table-dark">
+                                    <thead class="table-dark    ">
                                         <tr>
                                             <th>No</th>
                                             <th>User</th>
@@ -202,6 +283,29 @@ $saldo = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(saldo) AS total_s
                             </div>
                         </div>
                     </div>
+                    <!-- Logout Confirmation Modal -->
+                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Tutup">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">Apakah kamu yakin ingin logout dari sistem?</div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                    <a class="btn btn-primary" href="logout.php">Ya, Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Content Row -->
+
                 </div>
 
 
@@ -222,6 +326,7 @@ $saldo = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(saldo) AS total_s
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
 
 </body>
 
