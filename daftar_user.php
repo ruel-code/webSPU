@@ -29,7 +29,7 @@ if (isset($_POST['username'])) {
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" class="login-form">
         <h1 class="login-title">Register</h1>
 
         <div class="input-box">

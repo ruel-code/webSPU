@@ -45,7 +45,7 @@ if (isset($_POST['username'])) {
 
 <body>
 
-  <form action="" method="post">
+  <form action="" method="post" class="login-form">
     <h1 class="login-title">Login</h1>
 
     <?php if ($error): ?>
