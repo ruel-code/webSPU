@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
 include "koneksi.php";
 $user = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) AS total_user FROM user WHERE status='aktif'"));
 $pemasukan = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(jumlah) AS total_pemasukan FROM pemasukan"));
